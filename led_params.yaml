@@ -1,0 +1,7 @@
+/led_panel1:
+  ros__parameters:
+    led_states: [true, false, false]
+
+/led_panel2:
+  ros__parameters:
+    led_states: [false, false, false]

@@ -1,0 +1,48 @@
+{
+    "name": "ROS 2 Jazzy Development Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "minh" // Change as needed
+        }
+    },
+    "remoteUser": "minh", // Must match build arg USERNAME
+    "workspaceFolder": "/home/minh/ros_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/minh/ros_ws,type=bind",
+
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "ROS_DOMAIN_ID": "42",
+        "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST"
+    },
+
+    "runArgs": [
+        "--runtime=nvidia",
+        "--gpus=all",
+        "--net=host",
+        "--ipc=host",
+        "--pid=host",
+        "-e", "DISPLAY=${localEnv:DISPLAY}"
+    ],
+
+    "mounts": [
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
+        "source=/dev/dri,target=/dev/dri,type=bind"
+    ],
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros",
+                "mhutchie.git-graph"
+            ]
+        }
+    },
+
+    "postCreateCommand": "cd /home/minh/ros_ws && vcs import src < packages.repos && rosdep update && rosdep install --from-paths src --ignore-src -r -y && colcon build && bash -c 'echo source /home/minh/ros_ws/install/setup.bash >> ~/.bashrc'"
+}
