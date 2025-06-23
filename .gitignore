@@ -3,6 +3,7 @@ build/
 install/
 log/
 .colcon/
+.vscode/
 *.pyc
 *.swp
 *.bak
