@@ -1,0 +1,11 @@
+# ROS 2 workspace ignores
+build/
+install/
+log/
+.colcon/
+*.pyc
+*.swp
+*.bak
+*.DS_Store
+*.egg-info/
+__pycache__/
