@@ -1,2 +1,2 @@
 # ros2_docker
-ROS 2 Jazzy Development Container
+This repository contains a ROS 2 Jazzy development environment configured to run inside a Docker container with full desktop support, GPU acceleration, and a VS Code development container setup.
