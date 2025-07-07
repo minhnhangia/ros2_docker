@@ -29,7 +29,6 @@ public:
 
 private:
     void callbackCallAddTwoInts(rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedFuture future)
-
     {
         auto response = future.get();
         RCLCPP_INFO(this->get_logger(), "Sum: %d", (int)response->sum);
